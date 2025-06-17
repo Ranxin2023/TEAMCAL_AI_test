@@ -1,6 +1,25 @@
-// Populate timezone display
-const now = new Date();
-$('#timezoneNow').text(now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+// Get backend timezone from data attribute
+const backendTimezone = document.body.getAttribute('data-backend-timezone') || 'UTC';
+
+// Format the timezone label for display
+const timezoneLabel = backendTimezone.replace('_', ' ').replace('/', ' - ');
+
+// Function to update time display
+function updateTimezoneDisplay() {
+  const now = new Date().toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: backendTimezone
+  });
+
+  $('.timezone').html(`Time zone: ${timezoneLabel} (<span id="timezoneNow">${now}</span>)`);
+}
+
+// Call initially
+updateTimezoneDisplay();
+
+// Refresh every minute
+setInterval(updateTimezoneDisplay, 60000);
 
 // Global variable to hold grouped slots
 window.slotsGroupedByDate = {};
@@ -68,7 +87,8 @@ function renderSlotsForDate(date) {
   slots.forEach(slot => {
     const time = new Date(slot.start_time).toLocaleTimeString([], {
       hour: 'numeric',
-      minute: '2-digit'
+      minute: '2-digit',
+      timeZone: backendTimezone
     });
     html += `<button class="btn btn-outline-primary m-1">${time}</button>`;
   });

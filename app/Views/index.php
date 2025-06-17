@@ -7,7 +7,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="index.css" rel="stylesheet">
 </head>
-<body>
+<body data-backend-timezone="<?= getenv('CALENDLY_TIMEZONE') ?>">
+
   <div class="container container-main">
     <div class="row">
       <!-- Left section -->
@@ -24,7 +25,7 @@
           <!-- Calendar days will be filled by fetchcalendar.js -->
         </div>
         <div class="timezone">
-          Time zone: Pacific Time - US & Canada (<span id="timezoneNow"></span>)
+          <!-- Time zone: Pacific Time - US & Canada (<span id="timezoneNow"></span>) -->
         </div>
 
         <form id="calendlyForm" class="mt-3">
