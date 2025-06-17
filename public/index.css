@@ -1,0 +1,38 @@
+body {
+  background: #f9f9f9;
+}
+
+.container-main {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.calendar-day {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background: #e6f0ff;
+  color: #007bff;
+  text-align: center;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.calendar-day:hover {
+  background: #cce0ff;
+}
+
+.calendar-day.active {
+  background: #007bff;
+  color: #fff;
+}
+
+.timezone {
+  font-size: 0.9em;
+  color: #666;
+}
